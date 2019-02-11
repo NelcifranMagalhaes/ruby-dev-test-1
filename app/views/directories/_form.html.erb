@@ -1,0 +1,47 @@
+
+<%= simple_form_for(@directory) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<br>
+  <div class="columns">
+    <div class="field column is-one-third">
+        <label class="label">Name</label>
+        <div class="control">
+            <%= f.input :name,label: false ,input_html: {class: 'input'}%>
+        </div>
+    </div>
+
+    <div class="field column is-one-third">
+        <label class="label">Image of Directory</label>
+        <div class="control">
+            <%= f.input :image_directory,label: false ,input_html: {class: 'input'}%>
+        </div>
+    </div>
+    
+  </div>
+
+  <article class="message is-dark">
+  	<div class="message-header">
+  		<p>Sub Directories</p>
+  	</div>
+  </article>
+  <div class="field" id ="sub_directories">
+  	<%= f.simple_fields_for :sub_directories do |c| %>
+  	<%= render 'sub_directory_fields', f: c %>
+  	<% end %>
+  </div>
+  <div class="field">
+  	<%= link_to_add_association '+Sub Directory', f, :sub_directories,class: "button is-success"%>
+  </div>
+
+  <div class="columns">
+    <div class="field is-grouped is-grouped-right column is-4 is-offset-8">
+      <p class="control">
+        <%= f.button :submit ,class: "button is-primary"%>
+      </p>
+      <p class="control">
+       <%= link_to 'Voltar', directories_path ,class: "button is-light is-inverted"%>
+      </p>
+    </div>
+  </div>
+<% end %>
