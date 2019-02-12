@@ -63,4 +63,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'simple_form'
 #https://github.com/rails/jquery-rails
 gem 'jquery-rails'
+# https://github.com/nathanvda/cocoon
 gem "cocoon"
+#https://github.com/bokmann/font-awesome-rails
+gem 'font-awesome-rails'
+gem 'image_processing', '~> 1.2'

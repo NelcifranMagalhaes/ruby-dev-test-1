@@ -1,9 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @directory.name %>
-</p>
+<div class="tile">
+	<span class="tag">
+	  Directory Name
+	</span>
+</div>
+<div class="tile">
+  <div class="column">
+	<%= @directory.name %>
+  </div>
+</div>
+<div class="tile">
+	<span class="tag">
+	  Sub Directory Names
+	</span>
+</div>
+  <% @directory.sub_directories.each do |sub| %>
+	<div class="column"><%= sub.name %></div>
+  <% end %>
 
-<%= link_to 'Edit', edit_directory_path(@directory) %> |
-<%= link_to 'Back', directories_path %>
+<div class="columns">
+  <div class="field is-grouped is-grouped-right column is-4 is-offset-8">
+    <p class="control">
+    <%= link_to 'Edit',edit_directory_path(@directory),class: "button is-primary" %>
+    </p>
+    <p class="control">
+    <%= link_to 'Back', directories_path ,class: "button is-info is-inverted"%>
+    </p>
+  </div>
+</div>

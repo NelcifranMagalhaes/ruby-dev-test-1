@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
+  	<meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
     <title>RubyDevTest1</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
   </head>
 
   <body>
-    <%= yield %>
+    <!-- START NAV -->
+    <nav class="navbar is-white">
+        <div class="container">
+            <div class="navbar-brand">
+                <%= link_to "Pagina Principal", root_path ,class: "navbar-item brand-text" %>
+            </div>
+        </div>
+    </nav>
+    <!-- END NAV -->
+    <div class="container">
+        <div class="section">
+          <% if notice.present? %>
+            <div class="notification is-success">
+              <%= notice %>
+            </div>
+          <% end %>
+          <%= yield %>
+      </div>
+    </div>
+
   </body>
+
 </html>
