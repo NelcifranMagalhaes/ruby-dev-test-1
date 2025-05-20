@@ -15,7 +15,7 @@ module Api
 
         if @directory.save
           render json: { id: @directory.id, name: @directory.name,
-                        content: @directory.content.attached? ? @directory.content : "Sem arquivos" }, status: :created
+                        content: @directory.content.attached? ? @directory.content : I18n.t("without_files") }, status: :created
         else
           render json: { errors: @directory.errors.full_messages }, status: :unprocessable_entity
         end
@@ -24,7 +24,7 @@ module Api
       def update
         if @directories.update(directory_params)
           render json: { id: @directories.id, name: @directories.name,
-                        content: @directories.content.attached? ? @directories.content : "Sem arquivos" }, status: :ok
+                        content: @directories.content.attached? ? @directories.content : I18n.t("without_files") }, status: :ok
         else
           render json: { errors: @directories.errors.full_messages }, status: :unprocessable_entity
         end
@@ -32,7 +32,7 @@ module Api
 
       def destroy
         if @directories.destroy
-          render json: { message: "Diretório excluído com sucesso" }, status: :no_content
+          render status: :no_content
         else
           render json: { errors: @directories.errors.full_messages }, status: :unprocessable_entity
         end
